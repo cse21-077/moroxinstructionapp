@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/signature_pad"></script>
+    <script src="https://raw.githubusercontent.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.js"></script>
+
+    <link rel="stylesheet" href="css/styles.css">
+
+
+    <title>Request Valuation - Morox|Evaluator</title>>
+    
+</head>
+<body>
+  <header>
+    <img src="images/logo.jpg" alt="Company Logo">
+</header>
+
+
+<form id="valuationForm" onsubmit="submitForm(event)">
+    <label for="fullName">Requesting Client Full Names:</label>
+    <input type="text" id="fullName" name="fullName" placeholder="Enter full names" required>
+
+    <label for="idNumber">ID No:</label>
+    <input type="text" id="idNumber" name="idNumber" placeholder="Enter ID number" pattern="[0-9]{9}" title="Enter a valid 9-digit ID number" required>
+
+    <label for="phoneNumber">Phone Number:</label>
+    <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="Enter phone number" pattern="[0-9]{8}" title="Enter a valid 8-digit phone number" required>
+
+    <label for="postalAddress">Postal Address:</label>
+    <textarea id="postalAddress" name="postalAddress" placeholder="Enter postal address" required></textarea>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" placeholder="Enter email address" required>
+
+    <label for="deliveryMode">Preferred Mode of Delivery:</label>
+    <input type="text" id="deliveryMode" name="deliveryMode" placeholder="Enter preferred delivery mode">
+
+    <label for="propertyDescription">Description of the Property:</label>
+    <textarea id="propertyDescription" name="propertyDescription" placeholder="Enter property description"></textarea>
+
+    <label for="valuationPurpose">Purpose of Valuation:</label>
+    <input type="text"     id="valuationPurpose" name="valuationPurpose" placeholder="Enter purpose of valuation" required>
+
+
+
+
+<!-- ProfessionalFeesTable -->
+<div id="professionalFees">
+    <h2>Professional Fees</h2>
+    <p>(A) Residential, Commercial, and Industrial Properties</p>
+    <table>
+        <tr>
+            <th>Market Value of Property</th>
+            <th>Basic Tariff</th>
+            <th>Additional to Basic Tariff</th>
+        </tr>
+        <tr>
+            <td>Up to P50,000</td>
+            <td>P750</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td> From P50,001 to P150,000</td>
+            <td>P750</td>
+            <td>P3.50 per P1,000 over P50,000</td>
+        </tr>
+        <tr>
+          <td>From P150,001 to P400,000</td>
+          <td>P1,100</td>
+          <td>P2,50 per P1 000 over P150 000
+          </td>
+      </tr>
+      <tr>
+        <td>From P400 001 to P1 000 000 </td>
+        <td>P1,725</td>
+        <td>P2,00 per P1 000 over P400 000
+        </td>
+    </tr>
+    <tr>
+      <td>From P1 000 001 to P2 000 000</td>
+      <td>P2,925</td>
+      <td>P1,50 per P1 000 over P1 000 000
+      </td>
+  </tr>
+  <tr>
+    <td>From P2 000 001 to P3 000 000</td>
+    <td>P4,425</td>
+    <td>1,00 per P1 000 over P2 000 000
+    </td>
+</tr>
+<tr>
+  <td>From P3 000 001 to P4 000 000</td>
+  <td>P5,425 </td>
+  <td>P0,75 per P1 000 over P3 000 000
+  </td>
+</tr>
+<tr>
+  <td>From P4 000 001 to P5 000 000</td>
+  <td>P6,175 </td>
+  <td>P0,50 per P1 000 over P4 000 000
+  </td>
+</tr>
+<tr>
+  <td>Over P5 000 000</td>
+  <td>P6,625</td>
+  <td>P0,25 per P1 000 over P5 000 000
+  </td>
+</tr>
+
+        
+    </table>
+
+    <p>(B) Agricultural Properties (for farms bigger than 50 Hectares – minimum fee of P1000)</p>
+    <table>
+        <tr>
+            <th>Market Value of Property</th>
+            <th>Basic Tariff</th>
+            <th>Additional to Basic Tariff</th>
+        </tr>
+        <tr>
+            <td>Up to P50,000 </td>
+            <td>P1 000
+            </td>
+            <td>_</td>
+        </tr>
+        <tr>
+            <td>From P50,001 to P150,000</td>
+            <td>P1 000 </td>
+            <td>P5,00 per P1 000 over P50 000
+            </td>
+        </tr>
+        <tr>
+          <td>From P100 001 to P250 000</td>
+          <td>P1 250</td>
+          <td>P3,50 per P1 000 over P100 000
+          </td>
+      </tr>
+      <tr>
+        <td>Over P250 000</td>
+        <td>P1 175 </td>
+        <td>P2,00 per P1 000 over P400 000
+        </td>
+    </tr>
+ 
+    </table>
+</div>
+
+
+
+
+<!--page2-Additional Information -->
+<div id="page2">
+    <h2>Additional Information</h2>
+
+    <p>A non-refundable deposit of P1,000 and the transport fee are to be paid before the valuation work begins. The client hereby commits to pay the balance of the valuation upon receipt and prior to receiving the valuation report. Please note that any estimate you were given prior is not a reflection of the final valuation fees payable.</p>
+
+    <label for="attachedDocuments">ATTACHED DOCUMENTS RECEIVED FROM THE CLIENT:</label>
+    <input type="file" id="attachedDocuments" name="attachedDocuments" accept=".pdf, .jpg" multiple>
+
+    <label for="deposit">DEPOSIT:</label>
+    <input type="file" id="deposit" name="deposit" accept=".pdf, .doc, .docx, .jpg, .png">
+
+    <label for="signature">SIGN:</label>
+    <div>
+        <canvas id="signatureCanvas" width="400" height="200" style="border: 1px solid #48506b; border-radius: 4px;"></canvas>
+        <button type="button" onclick="clearSignature()">Clear Signature</button>
+    </div>
+    <input type="hidden" id="signatureInput" name="signature" required>
+
+
+    <label for="date">DATE:</label>
+    <input type="date" id="date" name="date" required>
+
+    
+
+
+
+    <h2>BANKING DETAILS:</h2>
+    <p>Morokotso TKM (Pty) LTD: BW00000460648</p>
+    <p>Banking Details:</p>
+    <p>Morox Properties</p>
+    <p>First National Bank</p>
+    <p>Acc No: 629 232 137 14</p>
+    <p>Branch code: 284567</p>
+    <p>Kgale Branch</p>
+
+    <p>Proof of Payment to be sent to: <a href="mailto:accounts@moroxproperties.co.bw">accounts@moroxproperties.co.bw</a><br>
+    <a href="mailto:valuations@moroxproperties.co.bw">valuations@moroxproperties.co.bw</a>
+    </p>
+
+</div>
+
+<button type="submit">Submit Request</button>
+<div id="errorMessages" class="error"></div>
+
+
+
+
+</form>
+
+<button type="button" onclick="generatePDF()">Download as PDF</button>
+
+<button class="back-to-home-button" onclick="redirectToHome()">Back to Home</button>
+
+
+<script>
+
+function generatePDF() {
+      const formElement = document.getElementById('valuationForm');
+
+      if (formElement) {
+        html2pdf(formElement, {
+          margin: 10,
+          filename: 'property_valuation_request.pdf',
+          image: { type: 'jpeg', quality: 0.98 },
+          html2canvas: { scale: 2 },
+          jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+        });
+      } else {
+        console.error("Form element not found.");
+      }
+    }
+
+
+      // signature Pad
+      const canvas = document.getElementById('signatureCanvas');
+    const signaturePad = new SignaturePad(canvas);
+
+    // Function to clear the signature
+    function clearSignature() {
+        signaturePad.clear();
+    }
+
+    // Update the  the signature data on form submission
+    document.getElementById('valuationForm').addEventListener('submit', function(event) {
+        const signatureInput = document.getElementById('signatureInput');
+        signatureInput.value = signaturePad.toDataURL();
+    });
+
+
+    
+
+
+    function submitForm(event) {
+        event.preventDefault();
+
+        // Validate and submit the form logic
+
+        alert('Property valuation request submitted successfully!');
+    }
+
+
+    function redirectToHome() {
+            window.location.href = "index.html"
+        }
+
+
+    </script>
+
+
+
+    <script>
+
+
+</script>
+
+
+
+
+</body>
+</html>
+
